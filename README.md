@@ -15,6 +15,7 @@ cd ~/jackal_ws
 source /opt/ros/humble/setup.bash
 sudo chown -R sim:sim ~/jackal_ws
 ```
+password: sim
 ```
 colcon build
 source install/setup.bash
