@@ -67,4 +67,31 @@ RUN echo "source /opt/ros/humble/setup.bash" >> /home/sim/.bashrc && \
 USER sim
 WORKDIR /home/sim
 
-CMD ["bash"]
+#CMD ["bash"]
+
+# Switch back to root to install new packages
+USER root
+
+# ------------------------------------------------------
+# 1) Install packages for VNC + minimal window manager
+# ------------------------------------------------------
+RUN apt-get update && apt-get install -y \
+    x11vnc \
+    xvfb \
+    fluxbox \
+    xterm && \
+    rm -rf /var/lib/apt/lists/*
+
+# ------------------------------------------------------
+# 2) Copy a startup script that launches Xvfb, fluxbox & x11vnc
+# ------------------------------------------------------
+COPY start_vnc.sh /start_vnc.sh
+RUN chmod +x /start_vnc.sh
+
+# Expose VNC port
+EXPOSE 5900
+
+# ------------------------------------------------------
+# 3) Make the script the container CMD
+# ------------------------------------------------------
+CMD ["/start_vnc.sh"]
