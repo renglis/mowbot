@@ -73,7 +73,7 @@ Now you can type commands in that **xterm** window within VNC.
 Inside either the xterm window in VNC **or** the same container shell (both ways are valid):
 
 ```bash
-cd ~/jackal_ws
+cd jackal_ws
 source /opt/ros/humble/setup.bash
 colcon build
 source install/setup.bash
@@ -90,31 +90,3 @@ ros2 launch jackal_gazebo jackal_world.launch.py
 2. **Performance**: Uses software rendering; slower than native GPU, but enough for typical robotics dev.
 3. **Security**: By default, `x11vnc` is running **no password**. For local dev, that’s often fine. For broader networks, set a password via `x11vnc -usepw`.
 4. **Resolution**: Tweak `Xvfb :1 -screen 0 1280x800x24` in `start_vnc.sh` if you need bigger resolution.
-
----
-
-## Example `start_vnc.sh`
-
-```bash
-#!/usr/bin/env bash
-# start_vnc.sh: spin up an X server + minimal WM + x11vnc in Docker
-
-# 1) Virtual display at :1
-Xvfb :1 -screen 0 1280x800x24 &
-sleep 2
-
-# 2) Start Fluxbox
-fluxbox &
-sleep 1
-
-# 3) Start x11vnc on port 5900, no password
-x11vnc -display :1 -forever -nopw -listen 0.0.0.0 -rfbport 5900 &
-
-# Optionally open xterm automatically:
-# DISPLAY=:1 xterm &
-
-sleep 2
-exec bash
-```
-
-That’s it! You have **VNC-based** Gazebo on macOS Docker, avoiding all OpenGL and XQuartz headaches. Happy simming!
