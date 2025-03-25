@@ -19,7 +19,7 @@ mowbot/
         ├── jackal/
         ├── jackal_simulator/
         ├── velodyne/
-        └── velodyne_description/  # or from a stable fork
+        └── velodyne_description/
 ```
 
 ## 3. Build the Docker Image
@@ -51,11 +51,9 @@ docker run -it --rm \
 1. Open **RealVNC Viewer** (or any VNC client) on your Mac.
 2. Connect to `127.0.0.1:5900` (or `localhost:5900`).
 
-You’ll see a **blank Fluxbox desktop** – a grey screen. Right-click for the Fluxbox menu.
+You’ll see a **blank Fluxbox desktop** – a grey screen.
 
-## 6. Open a Terminal **Inside the Same Container Shell**
-
-If you’d like to open a graphical terminal window in Fluxbox:
+## 6. Inside the Same Container Shell
 
 1. **In the container shell** you already got from Step 4, run:
    ```bash
@@ -63,8 +61,6 @@ If you’d like to open a graphical terminal window in Fluxbox:
    xterm &
    ```
    This starts `xterm` in the VNC session on display `:1`, so you see it in Fluxbox.
-
-2. Alternatively, you can add `xterm &` in your `start_vnc.sh` so it opens automatically when the container starts.
 
 Now you can type commands in that **xterm** window within VNC.
 
