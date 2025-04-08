@@ -1,0 +1,202 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="lawn_world">
+
+    <!-- Lighting -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- Flat green lawn (20x20) -->
+    <model name="grass_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>20 20</size>
+            </plane>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>20 20</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <!-- Standard short grass texture -->
+              <name>Gazebo/Grass</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- "Tall Grass Layer" as a big block. This won't cut, just for demonstration. -->
+    <model name="tall_grass_layer">
+      <static>true</static>
+      <link name="link">
+        <!-- Raise it a bit (z=0) if you want it flush with ground,
+             or try z=0.01 if the big plane flickers with the ground. -->
+        <pose>0 0 0 0 0 0</pose>
+
+        <collision name="collision">
+          <geometry>
+            <!-- We'll do a box that's 20x20 in X/Y, 0.5m tall in Z -->
+            <box>
+              <size>20 20 0.2</size>
+            </box>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>20 20 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <!-- Use a green-ish color or any custom grass-like texture -->
+            <ambient>0.2 0.35 0.2 0.5</ambient>
+            <diffuse>0.4 0.6 0.4 0.5</diffuse>
+            <!-- alpha=0.8 so it's a little see-through -->
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Simple walls around the lawn, 20x20 area. -->
+    <model name="wall_north">
+      <static>true</static>
+      <link name="link">
+        <pose>0 10 0.5 0 0 0</pose>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>20 0.2 1</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>20 0.2 1</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="wall_south">
+      <static>true</static>
+      <link name="link">
+        <pose>0 -10 0.5 0 0 0</pose>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>20 0.2 1</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>20 0.2 1</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="wall_east">
+      <static>true</static>
+      <link name="link">
+        <pose>10 0 0.5 0 0 0</pose>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.2 20 1</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.2 20 1</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="wall_west">
+      <static>true</static>
+      <link name="link">
+        <pose>-10 0 0.5 0 0 0</pose>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.2 20 1</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.2 20 1</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Trees -->
+    <include>
+      <uri>model://oak_tree</uri>
+      <name>oak_tree_1</name>
+      <pose>5 5 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://oak_tree</uri>
+      <name>oak_tree_2</name>
+      <pose>-4 3 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://oak_tree</uri>
+      <name>oak_tree_3</name>
+      <pose>0 -6 0 0 0 0</pose>
+    </include>
+
+    <!-- Rocks -->
+    <include>
+      <uri>model://stone_10_2_5_1cm</uri>
+      <name>rock_1</name>
+      <scale>15 15 15</scale>
+      <pose>3 -3 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://stone_10_2_5_1cm</uri>
+      <name>rock_2</name>
+      <scale>15 15 15</scale>
+      <pose>-5 -2 0 0 0 0</pose>
+    </include>
+
+    <!-- Barrels -->
+    <include>
+      <uri>model://construction_barrel</uri>
+      <name>barrel_1</name>
+      <pose>1 4 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://construction_barrel</uri>
+      <name>barrel_2</name>
+      <pose>-2 -5 0 0 0 0</pose>
+    </include>
+
+  </world>
+</sdf>
