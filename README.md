@@ -88,7 +88,59 @@ ros2 launch jackal_gazebo jackal_world.launch.py
 4. **Resolution**: Tweak `Xvfb :1 -screen 0 1280x800x24` in `start_vnc.sh` if you need bigger resolution.
 
 
-# Inside Docker with workspace sourced
+-----
+
+
+# 🚀 Running Jackal Controllers & Moving in Gazebo (ROS 2 + Docker)
+
+## 1. Connect to Docker on a separate terminal than the one already running the jackal sim
+
+Enter container:
+
+```bash
+docker exec -it <container_id_or_name> bash
+```
+
+## 2. Source ROS + Workspace
+
+Inside Docker:
+
+```bash
+source /opt/ros/humble/setup.bash
+source ~/jackal_ws/install/setup.bash
+```
+
+## 3. Start Controllers
+
+Run:
+
+```bash
 ros2 run controller_manager spawner joint_state_broadcaster --controller-manager /controller_manager
 ros2 run controller_manager spawner jackal_velocity_controller --controller-manager /controller_manager
+```
+
+Verify:
+
+```bash
+ros2 control list_controllers
+```
+
+Expected:
+```
+joint_state_broadcaster [active]
+jackal_velocity_controller [active]
+```
+
+## 4. EXAMPLE -- Move Jackal in Gazebo
+
+Continuous Movement:
+
+```bash
+ros2 topic pub /cmd_vel geometry_msgs/msg/Twist "linear:
+  x: 0.5
+angular:
+  z: 0.0" --rate 5
+```
+
+Use `Ctrl+C` to stop.
 
