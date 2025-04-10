@@ -45,6 +45,10 @@ RUN mkdir -p /opt/ros/humble/lib/controller_manager && \
         https://raw.githubusercontent.com/ros-controls/ros2_control_demos/humble/controller_manager/scripts/spawner.py && \
     chmod +x /opt/ros/humble/lib/controller_manager/spawner.py
 
+# Patch shebang in spawner.py
+RUN sed -i '1s|^.*$|#!/usr/bin/env python3|' /opt/ros/humble/lib/controller_manager/spawner.py && \
+    chmod +x /opt/ros/humble/lib/controller_manager/spawner.py
+
 # 3) Copy local Jackal workspace
 COPY jackal_ws /root/jackal_ws
 
