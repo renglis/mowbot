@@ -86,3 +86,9 @@ ros2 launch jackal_gazebo jackal_world.launch.py
 2. **Performance**: Uses software rendering; slower than native GPU, but enough for typical robotics dev.
 3. **Security**: By default, `x11vnc` is running **no password**. For local dev, that’s often fine. For broader networks, set a password via `x11vnc -usepw`.
 4. **Resolution**: Tweak `Xvfb :1 -screen 0 1280x800x24` in `start_vnc.sh` if you need bigger resolution.
+
+
+# Inside Docker with workspace sourced
+ros2 run controller_manager spawner joint_state_broadcaster --controller-manager /controller_manager
+ros2 run controller_manager spawner jackal_velocity_controller --controller-manager /controller_manager
+
