@@ -38,7 +38,7 @@ This installs ROS 2 Humble + Jackal dependencies + VNC packages + everything els
 docker run -it \
   --platform linux/amd64 \
   -p 5900:5900 \
-  -v $(pwd):/jackal_ws \
+  -v $(pwd)/jackal_ws:/root/jackal_ws \
   jackal_vnc
 ```
 
