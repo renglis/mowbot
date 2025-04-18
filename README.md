@@ -46,6 +46,7 @@ docker run -it \
 - Starts a **Fluxbox** window manager on **Xvfb** display `:1`.
 - Launches **x11vnc** on port **5900**.
 - Lands you in a **container shell** as well.
+- Persists local changes into docker container
 
 ## 5. Connect via RealVNC
 
