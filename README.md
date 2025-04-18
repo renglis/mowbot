@@ -35,9 +35,10 @@ This installs ROS 2 Humble + Jackal dependencies + VNC packages + everything els
 ## 4. Run the Container with VNC
 
 ```bash
-docker run -it --rm \
+docker run -it \
   --platform linux/amd64 \
   -p 5900:5900 \
+  -v $(pwd):/workspace \
   jackal_vnc
 ```
 
