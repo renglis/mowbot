@@ -119,6 +119,8 @@ Run:
 ```bash
 ros2 run controller_manager spawner joint_state_broadcaster --controller-manager /controller_manager
 ros2 run controller_manager spawner jackal_velocity_controller --controller-manager /controller_manager
+ros2 run controller_manager spawner blade_velocity_controller --controller-manager /controller_manager
+
 ```
 
 Verify:
