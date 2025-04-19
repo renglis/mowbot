@@ -37,34 +37,36 @@
       </link>
     </model>
 
-    <!-- "Tall Grass Layer" as a big block. This won't cut, just for demonstration. -->
     <model name="tall_grass_layer">
       <static>true</static>
       <link name="link">
-        <!-- Raise it a bit (z=0) if you want it flush with ground,
-             or try z=0.01 if the big plane flickers with the ground. -->
         <pose>0 0 0 0 0 0</pose>
 
-        <collision name="collision">
-          <geometry>
-            <!-- We'll do a box that's 20x20 in X/Y, 0.5m tall in Z -->
+        <collision name="sensor_collision">
+            <pose>0 0 0.25 0 0 0</pose>  
+            <geometry>
             <box>
-              <size>20 20 0.2</size>
+                <size>20 20 0.05</size>
             </box>
-          </geometry>
+            </geometry>
+            <surface>
+            <contact>
+                <ode>
+                <collide_without_contact>true</collide_without_contact>
+                </ode>
+            </contact>
+            </surface>
         </collision>
 
         <visual name="visual">
           <geometry>
             <box>
-              <size>20 20 0.5</size>
+              <size>20 20 0.2</size>
             </box>
           </geometry>
           <material>
-            <!-- Use a green-ish color or any custom grass-like texture -->
             <ambient>0.2 0.35 0.2 0.5</ambient>
             <diffuse>0.4 0.6 0.4 0.5</diffuse>
-            <!-- alpha=0.8 so it's a little see-through -->
           </material>
         </visual>
       </link>
@@ -170,20 +172,6 @@
       <uri>model://oak_tree</uri>
       <name>oak_tree_3</name>
       <pose>0 -6 0 0 0 0</pose>
-    </include>
-
-    <!-- Rocks -->
-    <include>
-      <uri>model://stone_10_2_5_1cm</uri>
-      <name>rock_1</name>
-      <scale>15 15 15</scale>
-      <pose>3 -3 0 0 0 0</pose>
-    </include>
-    <include>
-      <uri>model://stone_10_2_5_1cm</uri>
-      <name>rock_2</name>
-      <scale>15 15 15</scale>
-      <pose>-5 -2 0 0 0 0</pose>
     </include>
 
     <!-- Barrels -->
