@@ -135,13 +135,10 @@ jackal_velocity_controller [active]
 
 ## 4. EXAMPLE -- Move Jackal in Gazebo
 
-Continuous Movement:
 
 ```bash
-ros2 topic pub /cmd_vel geometry_msgs/msg/Twist "linear:
-  x: 0.5
-angular:
-  z: 0.0" --rate 5
+sudo apt install ros-humble-teleop-twist-keyboard
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
 
 Use `Ctrl+C` to stop.
