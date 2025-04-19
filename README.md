@@ -76,7 +76,7 @@ source /opt/ros/humble/setup.bash
 colcon build
 source install/setup.bash
 export JACKAL_LASER=1; export JACKAL_LASER_MODEL=ust10
-ros2 launch jackal_gazebo jackal_world.launch.py config:=front_laser
+ros2 launch jackal_gazebo jackal_world.launch.py config:=front_laser use_sim_time:=true
 ```
 
 1. `colcon build` will create `install/` for your workspace.
@@ -87,9 +87,7 @@ ros2 launch jackal_gazebo jackal_world.launch.py config:=front_laser
 ros2 launch slam_toolbox online_async_launch.py use_sim_time:=true
 ```
 ```bash
-ros2 run explore_lite explore \
-  --ros-args --params-file \
-  $(ros2 pkg prefix m-explore-ros2)/share/m-explore-ros2/explore/config/params.yaml
+ros2 run explore_lite explore use_sim_time:=true
 ```
 
 ## 8. Usage Tips
