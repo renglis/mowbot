@@ -102,7 +102,16 @@ def generate_launch_description():
             executable='spawner.py',
             arguments=['jackal_velocity_controller'],
             output='screen',
-        )
+        ),
+        
+        # Blade Velocity Controller
+        Node(
+            package='controller_manager',
+            executable='spawner.py',
+            arguments=['blade_velocity_controller'],
+            output='screen',
+        ),
+
     ])
 
     ld = LaunchDescription()

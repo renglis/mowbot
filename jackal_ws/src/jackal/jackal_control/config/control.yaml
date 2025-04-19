@@ -7,6 +7,9 @@ controller_manager:
 
     jackal_velocity_controller:
       type: diff_drive_controller/DiffDriveController
+    
+    blade_velocity_controller:
+      type: forward_command_controller/ForwardCommandController
 
 jackal_velocity_controller:
   ros__parameters:
@@ -65,3 +68,9 @@ jackal_velocity_controller:
     angular.z.min_acceleration: -25.0
     angular.z.max_jerk: 0.0
     angular.z.min_jerk: 0.0
+
+blade_velocity_controller:
+  ros__parameters:
+    joints:
+      - blade_joint
+    interface_name: velocity

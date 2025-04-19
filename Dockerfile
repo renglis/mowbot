@@ -34,6 +34,8 @@ RUN apt-get update && apt-get install -y \
     ros-humble-gazebo-dev \
     ros-humble-gazebo-ros \
     ros-humble-std-msgs \
+    ros-humble-forward-command-controller \
+    ros-humble-teleop-twist-keyboard \
     x11-apps \
     gazebo \
     libgazebo-dev \

@@ -283,6 +283,12 @@
       <state_interface name="position"/>
       <state_interface name="velocity"/>
     </joint>
+    <joint name="blade_joint">
+        <command_interface name="velocity"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+    </joint>
+      
   </ros2_control>
 
   <!-- Ultrasonic -->
@@ -339,6 +345,48 @@
         </plugin>
     </sensor>
   </gazebo>
+
+  <!-- Blade link -->
+  <link name="blade_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.4 0.05 0.01"/> <!-- long, thin blade -->
+      </geometry>
+      <material name="yellow"/>
+    </visual>
+    <inertial>
+      <mass value="0.1"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+    </inertial>
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 1.5708"/> <!-- 90 degree rotated -->
+        <geometry>
+            <box size="0.4 0.05 0.01"/>
+        </geometry>
+        <material name="yellow"/>
+    </visual>
+  </link>
+  
+  
+  <joint name="blade_joint" type="continuous">
+    <parent link="chassis_link"/>
+    <child link="blade_link"/>
+    <origin xyz="0 0 -0.02" rpy="0 0 0"/> <!-- Adjust height if needed -->
+    <axis xyz="0 0 1"/>
+  </joint>
+  
+  <transmission name="blade_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="blade_joint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="blade_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
 
 
 

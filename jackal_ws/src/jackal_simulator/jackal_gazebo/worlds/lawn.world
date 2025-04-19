@@ -37,40 +37,114 @@
       </link>
     </model>
 
-    <model name="tall_grass_layer">
-      <static>true</static>
-      <link name="link">
-        <pose>0 0 0 0 0 0</pose>
 
-        <collision name="sensor_collision">
-            <pose>0 0 0.25 0 0 0</pose>  
+    <model name="grass_patch_front">
+        <static>true</static>
+        <link name="link">
+          <collision name="sensor_collision">
+            <pose>1.0 0 0.01 0 0 0</pose>  
             <geometry>
-            <box>
-                <size>20 20 0.05</size>
-            </box>
+              <box><size>2 2 0.01</size></box>
             </geometry>
             <surface>
-            <contact>
-                <ode>
-                <collide_without_contact>true</collide_without_contact>
-                </ode>
-            </contact>
+                <contact>
+                    <collide_without_contact>true</collide_without_contact>
+                </contact>
             </surface>
-        </collision>
-
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>20 20 0.2</size>
-            </box>
-          </geometry>
-          <material>
-            <ambient>0.2 0.35 0.2 0.5</ambient>
-            <diffuse>0.4 0.6 0.4 0.5</diffuse>
-          </material>
-        </visual>
-      </link>
-    </model>
+          </collision>
+          <visual name="visual">
+            <pose>1.0 0 0 0 0 0</pose>
+            <geometry>
+              <box><size>2 2 0.2</size></box>
+            </geometry>
+            <material>
+              <ambient>0.2 0.35 0.2 0.5</ambient>
+              <diffuse>0.4 0.6 0.4 0.5</diffuse>
+            </material>
+          </visual>
+        </link>
+      </model>
+  
+      <model name="grass_patch_ne">
+        <static>true</static>
+        <link name="link">
+          <collision name="sensor_collision">
+            <pose>5 5 0.01 0 0 0</pose>  
+            <geometry>
+              <box><size>3 3 0.01</size></box>
+            </geometry>
+            <surface>
+                <contact>
+                    <collide_without_contact>true</collide_without_contact>
+                </contact>
+            </surface>
+          </collision>
+          <visual name="visual">
+            <pose>5 5 0 0 0 0</pose>
+            <geometry>
+              <box><size>3 3 0.3</size></box>
+            </geometry>
+            <material>
+              <ambient>0.2 0.35 0.2 0.5</ambient>
+              <diffuse>0.4 0.6 0.4 0.5</diffuse>
+            </material>
+          </visual>
+        </link>
+      </model>
+  
+      <model name="grass_patch_sw">
+        <static>true</static>
+        <link name="link">
+          <collision name="sensor_collision">
+            <pose>-6 -4 0.01 0 0 0</pose>  
+            <geometry>
+              <box><size>2.5 2.5 0.01</size></box>
+            </geometry>
+            <surface>
+                <contact>
+                    <collide_without_contact>true</collide_without_contact>
+                </contact>
+            </surface>
+          </collision>
+          <visual name="visual">
+            <pose>-6 -4 0 0 0 0</pose>
+            <geometry>
+              <box><size>2.5 2.5 0.25</size></box>
+            </geometry>
+            <material>
+              <ambient>0.2 0.35 0.2 0.5</ambient>
+              <diffuse>0.4 0.6 0.4 0.5</diffuse>
+            </material>
+          </visual>
+        </link>
+      </model>
+  
+      <model name="grass_patch_nw">
+        <static>true</static>
+        <link name="link">
+          <collision name="sensor_collision">
+            <pose>-4 7 0.01 0 0 0</pose>  
+            <geometry>
+              <box><size>3 1.5 0.01</size></box>
+            </geometry>
+            <surface>
+                <contact>
+                    <collide_without_contact>true</collide_without_contact>
+                </contact>
+            </surface>
+          </collision>
+          <visual name="visual">
+            <pose>-4 7 0 0 0 0</pose>
+            <geometry>
+              <box><size>3 1.5 0.2</size></box>
+            </geometry>
+            <material>
+              <ambient>0.2 0.35 0.2 0.5</ambient>
+              <diffuse>0.4 0.6 0.4 0.5</diffuse>
+            </material>
+          </visual>
+        </link>
+      </model>
 
     <!-- Simple walls around the lawn, 20x20 area. -->
     <model name="wall_north">
