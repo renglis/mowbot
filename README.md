@@ -83,10 +83,22 @@ ros2 launch jackal_gazebo jackal_world.launch.py config:=front_laser use_sim_tim
 2. Then source it (`source install/setup.bash`).
 3. Finally, launch your simulation. Gazebo’s 3D window appears inside VNC.
 
+separate term:
 ```bash
+source /opt/ros/humble/setup.bash
+source ~/jackal_ws/install/setup.bash
 ros2 launch slam_toolbox online_async_launch.py use_sim_time:=true
 ```
+separate term:
 ```bash
+source /opt/ros/humble/setup.bash
+source ~/jackal_ws/install/setup.bash
+ros2 launch jackal_navigation nav2.launch.py use_sim_time:=true
+```
+separate term:
+```bash
+source /opt/ros/humble/setup.bash
+source ~/jackal_ws/install/setup.bash
 ros2 run explore_lite explore use_sim_time:=true
 ```
 
