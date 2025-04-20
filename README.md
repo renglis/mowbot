@@ -100,9 +100,7 @@ separate term:
 source /opt/ros/humble/setup.bash
 source ~/jackal_ws/install/setup.bash
 ros2 run explore_lite explore \
-  --ros-args -p planner_frequency:=1.0 \
-             -p progress_timeout:=30.0 \
-             -p costmap_topic:=/global_costmap/costmap \
+  --ros-args -p costmap_topic:=/global_costmap/costmap \
              -p use_sim_time:=true
 ```
 
