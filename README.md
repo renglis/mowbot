@@ -87,7 +87,7 @@ separate term:
 ```bash
 source /opt/ros/humble/setup.bash
 source ~/jackal_ws/install/setup.bash
-ros2 launch slam_toolbox online_async_launch.py use_sim_time:=true
+ros2 launch slam_toolbox online_async_launch.py use_sim_time:=true slam_params_file:=/root/jackal_ws/src/jackal/jackal_navigation/config/slam.yaml
 ```
 separate term:
 ```bash
