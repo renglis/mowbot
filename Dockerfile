@@ -36,11 +36,15 @@ RUN apt-get update && apt-get install -y \
     ros-humble-std-msgs \
     ros-humble-forward-command-controller \
     ros-humble-teleop-twist-keyboard \
+    ros-humble-slam-toolbox \
+    ros-humble-rmw-cyclonedds-cpp \
     x11-apps \
     gazebo \
     libgazebo-dev \
     unzip \
   && rm -rf /var/lib/apt/lists/*
+
+ENV RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
 # 2) Install and patch spawner.py for ros2_control
 RUN mkdir -p /opt/ros/humble/lib/controller_manager && \

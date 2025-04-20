@@ -43,7 +43,6 @@ def generate_launch_description():
             output='screen',
             parameters=[
               slam_config,
-              {'use_sim_time': LaunchConfiguration('use_sim_time')}
             ],
         )
 

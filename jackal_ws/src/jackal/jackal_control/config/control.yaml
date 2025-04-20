@@ -7,6 +7,11 @@ controller_manager:
 
     jackal_velocity_controller:
       type: diff_drive_controller/DiffDriveController
+      publish_rate: 50.0 
+      publish_tf: true 
+      odom_topic: odom 
+      odom_frame_id: odom
+      base_frame_id: base_link
     
     blade_velocity_controller:
       type: forward_command_controller/ForwardCommandController

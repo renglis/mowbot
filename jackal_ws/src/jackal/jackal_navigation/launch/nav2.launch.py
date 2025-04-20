@@ -115,6 +115,16 @@ def generate_launch_description():
         'use_composition', default_value='True',
         description='Whether to use composed bringup')
 
+    declare_bt_file_cmd = DeclareLaunchArgument(
+        'bt_xml_file',
+        default_value=PathJoinSubstitution([
+            pkg_nav2_bringup,
+            'behavior_trees',
+            'navigate_w_replanning_and_recovery.xml'
+        ]),
+        description='Full path to the behavior tree XML file to use'
+    )
+
     # Specify the actions
     bringup_cmd_group = GroupAction([
         PushRosNamespace(
@@ -156,7 +166,9 @@ def generate_launch_description():
                               'autostart': autostart,
                               'params_file': params_file,
                               'use_composition': use_composition,
-                              'container_name': 'nav2_container'}.items()),
+                              'container_name': 'nav2_container',
+                              'bt_xml_file': LaunchConfiguration('bt_xml_file'),
+        }.items()),
     ])
 
     # Create the launch description and populate
@@ -176,6 +188,7 @@ def generate_launch_description():
     ld.add_action(declare_params_file_cmd)
     ld.add_action(declare_autostart_cmd)
     ld.add_action(declare_use_composition_cmd)
+    ld.add_action(declare_bt_file_cmd)
 
     # Add the actions to launch all of the navigation nodes
     ld.add_action(bringup_cmd_group)

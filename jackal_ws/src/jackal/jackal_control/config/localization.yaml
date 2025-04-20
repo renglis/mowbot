@@ -3,8 +3,12 @@ ekf_node:
     odom_frame: odom
     base_link_frame: base_link
     world_frame: odom
+    map_frame: map
     publish_tf: true
+    provide_odom_frame: true 
     two_d_mode: true
+    use_sim_time: true
+    odom0: /jackal_velocity_controller/odom
 
     frequency: 50.0
 
