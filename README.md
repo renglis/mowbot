@@ -99,7 +99,7 @@ separate term:
 ```bash
 source /opt/ros/humble/setup.bash
 source ~/jackal_ws/install/setup.bash
-ros2 run explore_lite explore use_sim_time:=true
+ros2 run explore_lite explore --ros-args --remap use_sim_time:=true
 ```
 
 ## 8. Usage Tips
