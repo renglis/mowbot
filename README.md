@@ -1,4 +1,19 @@
-# Jackal ROS 2 Humble Docker + VNC on macOS
+# Mowbot
+
+## 📦 Project Deliverables & Team Contributions
+
+This section outlines the core technical deliverables of the MowBot project and identifies the team member(s) primarily responsible for each milestone.
+
+| **Deliverable**                                                                                  | **Contributor(s)**        | **Description**                                                                                                                                              |
+|--------------------------------------------------------------------------------------------------|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **ROS 2 + Gazebo Simulation Environment Setup**                                                  | Robert                    | Configured the full development environment using Docker and VNC for macOS. Successfully launched the Jackal robot in Gazebo and verified manual teleop.     |
+| **Ultrasonic Sensor Integration**                                                                | Anika                     | Designed and mounted a downward-facing ultrasonic sensor on the Jackal’s undercarriage. Tuned the sensor parameters to reliably detect grass height.         |
+| **Blade Actuator Logic for Grass Cutting**                                                       | Om                        | Developed the blade control node and corresponding logic to spin the mowing blade when tall grass is detected by the ultrasonic sensor.                      |
+| **Autonomous Navigation with LiDAR + SLAM**                                                      | Robert, Anika, Om (all)   | Collaboratively integrated the Hokuyo LiDAR, SLAM Toolbox, and Nav2 stack. Enabled Jackal to autonomously map and navigate the simulated lawn environment.  |
+
+Each of these deliverables built upon the previous one, culminating in a fully autonomous lawn-mowing robot capable of intelligent path planning and responsive cutting behavior.
+
+# Simulating Mowbot
 
 ## 1. Prerequisites
 
